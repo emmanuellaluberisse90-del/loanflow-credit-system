@@ -1,56 +1,44 @@
-LoanFlow
-Sistema de Pré-análise, Simulação e Agendamento de Crédito
+LoanFlow — Credit System
 
-O LoanFlow é um protótipo de sistema financeiro desenvolvido para demonstrar um fluxo simplificado de pré-análise de crédito, simulação de empréstimo e agendamento de atendimento em agência.
+A web application for credit pre-analysis, loan simulation, and appointment scheduling.
 
-O projeto foi desenvolvido com foco em integração entre frontend, backend, regras de negócio e banco de dados.
+This project was developed as an educational and portfolio prototype using FastAPI, React, and SQLite.
 
-Aviso: o LoanFlow é um projeto educacional e de portfólio. As regras de análise de crédito utilizadas são fictícias e não representam critérios reais de instituições financeiras.
+Disclaimer: LoanFlow does not represent the actual rules of any financial institution. All business rules and data used in this project are fictional and intended for educational purposes only.
 
-Funcionalidades
-
-O sistema permite:
-
-Cadastro e consulta de clientes
-Cadastro de perfil financeiro
-Criação de solicitações de crédito
-Pré-análise de crédito
-Cálculo de comprometimento de renda
-Simulação de empréstimos
-Cálculo do valor das parcelas
-Verificação de compatibilidade da parcela
-Cadastro de agências
-Consulta de horários disponíveis
-Agendamento de atendimento
-Cancelamento de agendamento
-Interface web integrada à API
-Fluxo do sistema
-Cliente
-   ↓
-Solicitação
-   ↓
-Pré-análise
-   ↓
-Simulação
-   ↓
-Escolha da agência
-   ↓
-Escolha do horário
-   ↓
-Agendamento
-   ↓
-Confirmação
-Arquitetura
-React
-   ↓
-FastAPI
-   ↓
-Regras de negócio
-   ↓
-SQLAlchemy
-   ↓
-SQLite
-Tecnologias utilizadas
+Features
+Customer registration
+Financial profile registration
+Credit request creation
+Rule-based credit pre-analysis
+Loan simulation
+Installment affordability verification
+Bank branch registration and consultation
+Available time slot consultation
+Appointment scheduling
+Appointment cancellation
+Web interface integrated with the backend
+System Flow
+Identification
+      ↓
+Registration Verification
+      ↓
+Credit Pre-analysis
+      ↓
+Loan Simulation
+      ↓
+Appointment Scheduling
+      ↓
+Customer Service
+Architecture
+React Frontend
+       ↓
+FastAPI Backend
+       ↓
+Business Rules
+       ↓
+SQLite Database
+Technologies
 Backend
 Python
 FastAPI
@@ -61,94 +49,51 @@ Frontend
 React
 Vite
 JavaScript
+HTML
 CSS
-Ferramentas
+Tools
 Git
 GitHub
-Visual Studio Code
-Swagger / OpenAPI
-Principais módulos
-Cliente
+VS Code
+Modules
 
-Armazena informações básicas do cliente, como:
+The system is organized into the following modules:
 
-Nome
-CPF representado por hash fictício
-Data de nascimento
-Telefone
-E-mail
-Cidade
-Status do cadastro
-Perfil financeiro
+Customer
+Financial Profile
+Credit Request
+Credit Pre-analysis
+Loan Simulation
+Bank Branch
+Time Slot
+Appointment
+Simulation Example
 
-Armazena informações utilizadas pela pré-análise:
+Example used during system testing:
 
-Renda mensal
-Tipo de renda
-Tempo de renda
-Outras rendas
-Despesas mensais
-Dívidas ativas
-Histórico de pagamentos
-Atrasos nos últimos 12 meses
-Pré-análise
+Information	Value
+Requested amount	R$ 20,000.00
+Term	24 months
+Monthly rate	2%
+Approximate installment	R$ 1,057.42
+Approximate total amount	R$ 25,378.08
 
-O sistema aplica regras simplificadas para verificar:
+The values above are examples for testing purposes only.
 
-Renda mínima
-Comprometimento de renda
-Histórico de pagamentos
-Atrasos recentes
+Appointment Scheduling
 
-O resultado pode ser:
+The user can:
 
-aprovado
+Select a bank branch;
+View available time slots;
+Select a time slot;
+Confirm the appointment.
 
-ou
+After an appointment is created, the selected time slot becomes unavailable.
 
-nao_aprovado
-Simulação
+An appointment can also be cancelled. When this happens, the time slot becomes available again.
 
-O usuário informa:
-
-Valor desejado
-Prazo em meses
-Taxa mensal
-
-O sistema calcula:
-
-Valor da parcela
-Valor total
-Compatibilidade da parcela com a capacidade financeira simulada
-
-Exemplo:
-
-Valor: R$ 20.000,00
-Prazo: 24 meses
-Taxa: 2% ao mês
-
-Parcela aproximada: R$ 1.057,42
-Valor total: R$ 25.378,08
-Agendamento
-
-Depois da simulação, o usuário pode:
-
-Selecionar uma agência
-Consultar horários disponíveis
-Selecionar um horário
-Confirmar o atendimento
-
-A confirmação apresenta:
-
-Agência
-Data
-Horário
-Status
-ID do agendamento
-
-O sistema também impede que uma mesma solicitação tenha mais de um agendamento ativo.
-
-Estrutura do projeto
+Project Structure
 loanflow/
 │
 ├── backend/
@@ -169,90 +114,90 @@ loanflow/
 │   ├── package.json
 │   └── vite.config.js
 │
-├── loanflow.db
+├── .gitignore
 └── README.md
-Como executar o projeto
+How to Run
 1. Backend
 
-Abra um terminal na pasta:
+Open PowerShell in the project directory:
 
-C:\Users\aluno\Documents\loanflow
+cd C:\Users\aluno\Documents\loanflow
 
-Execute:
+Run:
 
 py -3.12 -m uvicorn backend.app.main:app --reload
 
-A API estará disponível em:
+The API will be available at:
 
 http://127.0.0.1:8000
 
-Documentação Swagger:
+Swagger API documentation:
 
 http://127.0.0.1:8000/docs
 2. Frontend
 
-Abra outro terminal e entre na pasta:
+Open another PowerShell terminal:
 
 cd C:\Users\aluno\Documents\loanflow\frontend
 
-Execute:
+Run:
 
 npm.cmd run dev
 
-O frontend estará disponível em:
+The application will be available at:
 
 http://localhost:5173
-Exemplo de fluxo
+Example Workflow
+1. Enter the credit request ID
+            ↓
+2. Run credit pre-analysis
+            ↓
+3. Enter amount, term, and interest rate
+            ↓
+4. Run loan simulation
+            ↓
+5. Load bank branches
+            ↓
+6. Select a branch
+            ↓
+7. Select an available time slot
+            ↓
+8. Schedule the appointment
+Project Goals
 
-Um exemplo de utilização do sistema:
+The goal of LoanFlow is to demonstrate practical knowledge of:
 
-Solicitação: 1
+REST API development;
+Python and FastAPI;
+Database modeling;
+SQLAlchemy;
+Business rules;
+Financial calculations;
+React frontend development;
+Frontend/backend integration;
+Data validation;
+Availability management;
+Git and GitHub.
+Future Improvements
 
-Pré-análise
-→ análise do perfil financeiro
+Possible future improvements include:
 
-Simulação
-→ R$ 20.000
-→ 24 meses
-→ 2% ao mês
+User authentication;
+Administrative dashboard;
+Credit request history;
+Improved user experience;
+Automated tests;
+Integration with external services;
+Experimental Machine Learning features;
+Large Language Model (LLM) integration.
+Project Status
 
-Agendamento
-→ Agência Jandaia
-→ 01/10/2026
-→ 14:00 às 14:30
+Functional MVP.
 
-Resultado
-→ Agendamento confirmado
-Objetivo do projeto
+The project currently includes a FastAPI backend, SQLite database, and React frontend integrated through REST APIs.
 
-O projeto foi desenvolvido como parte de um estudo prático envolvendo:
+Data
 
-Desenvolvimento de APIs
-Desenvolvimento frontend
-Banco de dados
-Regras de negócio
-Integração entre sistemas
-Desenvolvimento de aplicações financeiras
-Organização de projetos para portfólio
-Melhorias futuras
+All data used in this project is fictional or test data.
 
-Algumas funcionalidades podem ser adicionadas futuramente:
-
-Autenticação de usuários
-Dashboard administrativo
-Histórico de solicitações
-Notificações
-Testes automatizados
-Docker
-Deploy em nuvem
-Integração com modelos de Machine Learning
-Integração com LLMs para análise e explicação de dados
-Status
-
-Projeto funcional — MVP
-
-O fluxo principal de pré-análise, simulação e agendamento está implementado e integrado entre frontend e backend.
-
-Observação sobre dados
-
-Os dados utilizados no projeto são fictícios e destinados exclusivamente a fins educacionais e de demonstração.
+No real banking or personal data should be used in this repository.
